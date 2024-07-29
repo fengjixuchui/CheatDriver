@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{fb2ee3c7-00a0-41e6-93a4-896e06657c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{b5e9dd95-398c-43b7-b758-552ebf932857}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\loader.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\timing.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\int3handler.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\integrity.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\loader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\timing.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\comms.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\int3handler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integrity.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="src\handlers.asm">
+      <Filter>src</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.vsidx
+*.lock
+*.ipch
+*.suo
+*.wsuo
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.sqlite
+/.vs
+/SharedCheatLibrary/x64/Release
+/vcpkg_installed/x64-windows-static
+/SharedCheatLibrary/x64/Debug
+/SharedCheatLibrary/x64/ReleaseWithSpoofer/SharedCh.6639751d.tlog
+/SharedCheatLibrary/x64/ReleaseWithSpoofer

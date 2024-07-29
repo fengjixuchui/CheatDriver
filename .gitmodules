@@ -1,0 +1,6 @@
+[submodule "SKLib"]
+	path = SKLib
+	url = http://git.dev-server.warwick.internal/CheatKernel/SKLib.git
+[submodule "SharedCheatLibrary"]
+	path = SharedCheatLibrary
+	url = http://git.dev-server.warwick.internal/TheItalian/SharedCheatLibrary.git
