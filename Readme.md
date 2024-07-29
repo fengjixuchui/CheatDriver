@@ -1,11 +1,16 @@
 # Requirements
 
-Virtualization enabled in BIOS.
-IOMMU/VT-d enabled in BIOS.
-AMD or Intel CPU with SLAT.
-Driver blocklist disabled.
-HVCI disabled.
-msdia140.dll registered.
+Virtualization enabled in BIOS.  
+IOMMU/VT-d enabled in BIOS.  
+AMD or Intel CPU with SLAT.  
+Driver blocklist disabled.  
+HVCI disabled.  
+msdia140.dll registered.  
+
+```
+git submodule update --init --recursive
+```
+in a vs command prompt
 
 # How does it work?
 This is an example solution for vs2022 leveraging [SKLib](https://github.com/cutecatsandvirtualmachines/SKLib.git).
