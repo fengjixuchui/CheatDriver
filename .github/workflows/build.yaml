@@ -61,7 +61,7 @@ jobs:
         runVcpkgInstall : true
         vcpkgGitCommitId: '3426db05b996481ca31e95fff3734cf23e0f51bc'
         vcpkgDirectory: '${{ github.workspace }}/vcpkg'
-        vcpkgJsonGlob: 'D:/a/SKLib/SKLib/vcpkg.json'
+        vcpkgJsonGlob: 'D:/a/CheatDriver/CheatDriver/vcpkg.json'
         runVcpkgFormatString:  '[`install`, `--recurse`, `--clean-after-build`, `--x-install-root`, `$[env.VCPKG_INSTALLED_DIR]`, `--feature-flags`, `manifests,versions`]'
         
     # Restore vcpkg from the GitHub Action cache service. Note that packages are restored by vcpkg's binary caching
