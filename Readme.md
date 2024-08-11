@@ -12,6 +12,12 @@ git submodule update --init --recursive
 ```
 in a vs command prompt
 
+Latest WDK installed.
+
+# Compilation
+You can find pre-compiled versions in the github action artifacts.
+You can also just open in vs2022 and it should build properly.
+
 # How does it work?
 This is an example solution for vs2022 leveraging [SKLib](https://github.com/cutecatsandvirtualmachines/SKLib.git).
 
