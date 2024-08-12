@@ -55,6 +55,28 @@ jobs:
     - name: "Create directory '${{ env.VCPKG_DEFAULT_BINARY_CACHE }}'"
       shell: cmd
       run: mkdir -p $VCPKG_DEFAULT_BINARY_CACHE
+    - name: Extract Subject and Body
+      id: extract_message
+      shell: bash
+      run: |
+        # Extract the full commit message
+        full_message="${{ github.event.head_commit.message }}"
+
+        # Extract the first line as the subject
+        subject=$(echo "$full_message" | head -n 1)
+
+        # Extract the rest as the body (starting from line 2)
+        body=$(echo "$full_message" | tail -n +2)
+
+        # Output the extracted subject and body
+        echo "Commit Subject: $subject"
+        echo "Commit Body: $body"
+
+        # Set as environment variables for later steps
+        echo "commit_subject=$subject" >> $GITHUB_ENV
+        echo "commit_body<<EOF" >> $GITHUB_ENV
+        echo "$body" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
     - name: Run vcpkg
       uses: lukka/run-vcpkg@v11
       with:
@@ -102,3 +124,35 @@ jobs:
         #   ignore: Do not output any warnings or errors, the action does not fail
         # Optional. Default is 'warn'
         if-no-files-found: 'error'
+    - name: Check commit message format
+      id: check_message
+      shell: bash
+      run: |
+        # Extract the full commit message
+        full_message="${{ github.event.head_commit.message }}"
+
+        # Extract the first line as the subject
+        commit_message=$(echo "$full_message" | head -n 1)
+        
+        # Regex pattern to match v*.*.*
+        if [[ "$commit_message" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          echo "Commit message matches the version format."
+          echo "matches=true" >> $GITHUB_ENV
+        else
+          echo "Commit message does NOT match the version format."
+          echo "matches=false" >> $GITHUB_ENV
+        fi
+    - name: Create ZIP Archive
+      if: env.matches == 'true'
+      run: |
+        tar -czf CheatDriver.tar.gz "${{env.SOLUTION_FILE_PATH}}/x64/${{env.BUILD_CONFIGURATION}}"
+      shell: bash
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: env.matches == 'true'
+      with:
+        files: |
+          CheatDriver.tar.gz
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: ${{ env.commit_subject }}
+        body: ${{ env.commit_body }}
